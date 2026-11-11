@@ -1,0 +1,19 @@
+# Practice files
+practice_*.py
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
+# Secrets
+.env
+
+# Editor and OS junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
