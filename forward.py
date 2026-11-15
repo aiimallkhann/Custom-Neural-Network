@@ -1,32 +1,24 @@
 import numpy as np
 
-def forward(x, w, b) -> np.array:
-    x = np.array(x)
-    w = np.array(w)
-    b = np.array(b)
+class Layer_Dense:
+    def __init__(self, n_inputs, n_neurons):
+        self.weights = 0.10 * np.random.randn(n_inputs, n_neurons)
+        self.baises = np.zeros((1, n_neurons))
+        
+    def forward(self, inputs):
+        self.output = np.dot(inputs, self.weights) + self.baises
     
-    xw_dot = np.dot(x, w)
-    z = xw_dot + b
-    
-    return z
+class Activation_ReLU:
+    def forward(self, inputs):
+        self.output = np.maximum(0, inputs)
+            
+X = np.array([1.0, 2.0, -1.0])
 
-def relu(z : np.ndarray) -> np.ndarray:
-    return np.maximum(0,z)
+layer1 = Layer_Dense(3, 2)
+activation1 = Activation_ReLU()
 
-def layer_forward(x, w, b):
-    z = forward(x, w, b)
-    return relu(z)
+layer1.forward(X)
 
-if __name__ == "__main__":
-    x = np.array([1.0, 2.0, -1.0])
-    
-    w = np.array([
-        [0.5, -0.1],
-        [0.2, 0.8],
-        [-0.5, 0.3]
-    ])
-    
-    b = np.array([0.1, -0.2])
-    
-    output = layer_forward(x, w, b)
-    print("Activated Output:", output)
+activation1.forward(layer1.output)
+
+print('Activated Output:\n', activation1.output)
