@@ -11,6 +11,10 @@ class Layer_Dense:
 class Activation_ReLU:
     def forward(self, inputs):
         self.output = np.maximum(0, inputs)
+        
+class Activation_Softmax:
+    def forward(self, inputs):
+        
             
 X = np.array([1.0, 2.0, -1.0])
 
