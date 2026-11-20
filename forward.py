@@ -14,8 +14,10 @@ class Activation_ReLU:
         
 class Activation_Softmax:
     def forward(self, inputs):
+        exp_vals = np.exp(inputs - np.max(inputs, axis=1, keepdims=True))
+        probabilities = exp_vals / np.sum(exp_vals, axis=1, keepdims=True)
+        self.output = probabilities
         
-            
 X = np.array([1.0, 2.0, -1.0])
 
 layer1 = Layer_Dense(3, 2)
